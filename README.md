@@ -4,21 +4,13 @@ Dockerfile for [Syncthing Relay Server](https://docs.syncthing.net/users/strelay
 
 ## Usage
 
-Run as global relay server:
+Run as local server:
 
 ```sh
 docker run \
 --rm \
 -p 22067:22067 \
 -v $(pwd)/strelaysrv:/strelaysrv \
-t13a/strelaysrv
-```
-
-Run as local relay server:
-
-```sh
-docker run \
-...
 t13a/strelaysrv \
 su-exec strelaysrv /usr/local/bin/strelaysrv -pools=""
 ```
