@@ -28,4 +28,4 @@ RUN apk add --no-cache \
 
 ENTRYPOINT [ "/entrypoint.sh" ]
 
-CMD [ "su-exec", "strelaysrv", "/usr/local/bin/strelaysrv" ]
+CMD [ "su-exec", "strelaysrv", "strelaysrv" ]
