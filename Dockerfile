@@ -1,6 +1,4 @@
-ARG GOLANG_VERSION=1.11
-
-FROM golang:${GOLANG_VERSION}-alpine AS builder
+FROM golang:alpine AS builder
 
 ARG SYNCTHING_BRANCH=v0.14.51
 ARG SYNCTHING_REPOSITORY=https://github.com/syncthing/syncthing
