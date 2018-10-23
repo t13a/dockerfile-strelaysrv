@@ -1,6 +1,9 @@
-FROM golang:alpine AS builder
+ARG ALPINE_IMAGE=alpine
+ARG GOLANG_ALPINE_IMAGE=golang:alpine
 
-ARG SYNCTHING_BRANCH=v0.14.51
+FROM ${GOLANG_ALPINE_IMAGE} AS builder
+
+ARG SYNCTHING_BRANCH=master
 ARG SYNCTHING_REPOSITORY=https://github.com/syncthing/syncthing
 
 ENV CGO_ENABLED=0
@@ -12,7 +15,7 @@ RUN apk add --no-cache git && \
     rm -f strelaysrv && \
     go run build.go -no-upgrade build strelaysrv
 
-FROM alpine
+FROM ${ALPINE_IMAGE}
 
 ENV STRELAYSRV_USER=strelaysrv
 ENV STRELAYSRV_UID=1000
