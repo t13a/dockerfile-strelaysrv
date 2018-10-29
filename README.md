@@ -12,5 +12,5 @@ docker run \
 -p 22067:22067 \
 -v $(pwd)/strelaysrv:/strelaysrv \
 t13a/strelaysrv \
-su-exec strelaysrv /usr/local/bin/strelaysrv -pools=""
+-pools=""
 ```

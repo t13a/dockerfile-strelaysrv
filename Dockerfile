@@ -26,11 +26,6 @@ RUN go run build.go -no-upgrade build strelaysrv
 
 FROM ${ALPINE_IMAGE}
 
-ENV STRELAYSRV_USER=strelaysrv
-ENV STRELAYSRV_UID=1000
-ENV STRELAYSRV_GID=1000
-ENV STRELAYSRV_HOME=/strelaysrv
-
 COPY --from=builder /go/src/github.com/syncthing/syncthing/strelaysrv /usr/local/bin/strelaysrv
 COPY /rootfs /
 
@@ -38,6 +33,8 @@ RUN apk add --no-cache \
     ca-certificates \
     su-exec
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+ENV STRELAYSRV_UID=1000
+ENV STRELAYSRV_GID=1000
+ENV STRELAYSRV_HOME=/strelaysrv
 
-CMD [ "su-exec", "strelaysrv", "strelaysrv" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
